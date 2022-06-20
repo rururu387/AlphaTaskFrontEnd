@@ -1,1 +1,41 @@
-<p>currency-rate-meme works!</p>
+<br>
+<div class = "w-100 mat-elevation-z4 container">
+    <div class = " mat-elevation-z4 row align-items-center justify-content-center">
+        <div style="height: 15px;"></div>
+        <form class="search-width col-4">
+            <mat-form-field class = "example-full-width" appearance="fill">
+                <mat-label>Валюта</mat-label>
+                <input type="text"
+                    placeholder="Начните писать на английском..."
+                    aria-label="Валюта"
+                    matInput
+                    [formControl]="currencyFormControl"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="getOptionText">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value] = "option">
+                        {{option.getFullName()}}
+                    </mat-option>
+            </mat-autocomplete>
+            </mat-form-field>
+        </form>
+
+        <button mat-raised-button color="primary" (click)="showMeme()" class = "col-2">Жать сюда</button>
+    </div>
+</div>
+
+<br>
+
+<div *ngIf="this.gifMemes.length >= 1" class = "container mat-elevation-z2 p-2">
+    <div class = "align-items-start justify-content-center d-flex flex-wrap">
+        <div *ngFor="let gifMeme of this.gifMemes" class = "p-2">
+            <p class = "text-center">{{gifMeme.getTitle()}}</p>
+            <div>
+                <img [src]="gifMeme.getURL()" [style.width.px]="gifMeme.getWSizePixels()" [style.height.px]="gifMeme.getHSizePixels()" alt="Gif from Giphy">
+            </div>
+        </div>
+    </div>
+</div>
+<!--<iframe src="https://giphy.com/embed/3fM0YdrBuHiiQ" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/goose-3fM0YdrBuHiiQ">via GIPHY</a></p>
+[style.width.px]="gifMeme.getWSizePixels() - 150" [style.height.px]="gifMeme.getHSizePixels()"
+-->
+<!-- https://media4.giphy.com/media/XGPbVDSbBm70i0P2P4/giphy.gif?cid=c1de2e83c4nsxmc5h39j9bfdb3rul15v0pjwiiilqk1sshwk&rid=giphy.gif&ct=g -->
