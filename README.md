@@ -1,7 +1,11 @@
 # Run using docker
 
-(sudo) docker docker pull rururu387/alpha-task:frontend-v1.0
-(sudo) docker run -d -it -p 4200:80 rururu387/alpha-task:frontend-v1.0
+Application can be run using docker:<br>
+<br>
+(sudo) docker pull rururu387/alpha-task:frontend-v1.0 <br>
+(sudo) docker run -d -it -p 4200:80 rururu387/alpha-task:frontend-v1.0 <br>
+<br>
+Visit localhost:4200 once it starts. And don't forget to launch [backend server](https://github.com/rururu387/AlphaTaskBackend).
 
 # AlphaTaskFrontend
 
@@ -18,6 +22,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Build docker image: (sudo) docker build --no-cache -t rururu387/alpha-task:frontend-v1.0 .
 
 ## Further help
 
