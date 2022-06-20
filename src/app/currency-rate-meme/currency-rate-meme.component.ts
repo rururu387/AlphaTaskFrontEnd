@@ -97,7 +97,9 @@ export class CurrencyRateMemeComponent implements OnInit, OnDestroy
             },
             error: (error: any) =>
             {
-                let popUpSubscription = this.popUpService.danger("Не удалось получить гифку", error.message)
+                let popUpSubscription = this.popUpService.danger("Не удалось получить гифку", error.message + 
+                "\nВремя: " + error.timestamp + ".\nПуть запроса: " + error.servicePath + "\nСтатус-код: " +
+                    error.status)
                 .subscribe({ 
                     complete: () => { popUpSubscription.unsubscribe(); }
                 })
@@ -107,20 +109,6 @@ export class CurrencyRateMemeComponent implements OnInit, OnDestroy
                 memeSubscription.unsubscribe();
             }
         });
-
-        /*this.gifMemes = [];
-        let gifMeme = new VisualMediaObject(this.sanitizer);
-        gifMeme.setId("1");
-
-        const host = "https://giphy.com/";
-        let input = "embed/3fM0YdrBuHiiQ";
-
-        gifMeme.setURL(SecurityContext.RESOURCE_URL, host, input);
-        gifMeme.setHSizePixels(270);
-        gifMeme.setWSizePixels(480);
-        gifMeme.setTitle("Cool goose");
-
-        this.gifMemes.push(gifMeme);*/
     }
 
     filteredOptions: Observable<CurrencyName[]> = new Observable();
